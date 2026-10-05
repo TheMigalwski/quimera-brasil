@@ -1,0 +1,21 @@
+.rodape {
+  background: var(--blue);
+  color: var(--white);
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.texto {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.texto strong {
+  color: var(--yellow);
+}
+
+.sub {
+  font-size: 14px;
+  opacity: 0.6;
+  margin-top: 8px;
+}

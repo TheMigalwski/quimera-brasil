@@ -1,150 +1,214 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
-}
-
 .main {
   display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+/* ── Hero ── */
+.hero {
+  text-align: center;
+  padding: 32px 24px 16px;
 }
 
-.intro h1 {
-  max-width: 320px;
+.titulo {
   font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.1;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.quimera {
+  color: var(--green);
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
+.brasil {
+  color: var(--yellow);
+  text-shadow: 1px 1px 0 var(--blue), -1px -1px 0 var(--blue),
+    1px -1px 0 var(--blue), -1px 1px 0 var(--blue);
 }
 
-.ctas {
+.linha {
+  width: 60px;
+  height: 3px;
+  background: var(--green);
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+.subtitulo {
+  font-size: 15px;
+  color: var(--blue);
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+/* ── Manifesto ── */
+.manifestoWrapper {
   display: flex;
-  flex-direction: row;
+  background: linear-gradient(180deg, rgba(0, 39, 118, 0.03) 0%, rgba(0, 156, 59, 0.04) 100%);
+  border-top: 3px solid var(--yellow);
+}
+
+.faixaLateral {
+  flex: 1;
+  min-width: 40px;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0px,
+      transparent 40px,
+      rgba(0, 156, 59, 0.06) 40px,
+      rgba(0, 156, 59, 0.06) 42px,
+      transparent 42px,
+      transparent 82px,
+      rgba(255, 223, 0, 0.08) 82px,
+      rgba(255, 223, 0, 0.08) 84px
+    );
+}
+
+.manifesto {
+  max-width: 720px;
   width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  padding: 64px 32px 80px;
 }
 
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
+.manifestoHeader {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.manifestoTitulo {
+  font-size: 44px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--green);
+}
+
+.manifestoAbertura {
+  font-size: 24px;
+  color: var(--blue);
+  margin-top: 20px;
+  line-height: 1.5;
   font-weight: 500;
+  font-style: italic;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.secao {
+  margin-bottom: 48px;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.secao h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--yellow);
+  display: inline-block;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.secao p {
+  font-size: 18px;
+  line-height: 1.9;
+  color: var(--blue);
+  margin-bottom: 16px;
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+.secao p:first-of-type::first-letter {
+  font-size: 2.4em;
+  font-weight: 700;
+  color: var(--green);
+  float: left;
+  line-height: 1;
+  margin-right: 6px;
+  margin-top: 4px;
+}
+
+.principios {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.principios li {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--blue);
+  padding: 18px 24px;
+  background: rgba(255, 255, 255, 0.7);
+  border-left: 4px solid var(--green);
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 1px 4px rgba(0, 39, 118, 0.06);
+}
+
+.principios li strong {
+  color: var(--green);
+  font-size: 18px;
+}
+
+.convite {
+  text-align: center;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 3px solid var(--yellow);
+}
+
+.convite h3 {
+  display: block;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.convite p {
+  text-align: center;
+}
+
+.chamada {
+  font-size: 22px !important;
+  font-weight: 700;
+  color: var(--green) !important;
+  margin-top: 24px;
+  font-style: italic;
+}
+
+.botao {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 16px 40px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 28px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.botao:hover {
+  background: var(--blue);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .faixaLateral {
+    min-width: 12px;
   }
 
-  .intro {
-    gap: 16px;
+  .manifesto {
+    padding: 40px 16px 60px;
   }
 
-  .intro h1 {
+  .manifestoTitulo {
     font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
   }
 
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+  .manifestoAbertura {
+    font-size: 18px;
   }
-}
-
-.code {
-  font-family: var(--font-geist-mono);
-  font-size: 0.9em;
-  background: color-mix(in srgb, currentColor 8%, transparent);
-  padding: 0.1em 0.4em;
-  border-radius: 6px;
 }

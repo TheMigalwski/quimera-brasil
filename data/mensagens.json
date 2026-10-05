@@ -1,0 +1,80 @@
+[
+  {
+    "id": "seed-01",
+    "texto": "Saúde pública é direito, não privilégio",
+    "criadoEm": "2026-10-04T10:00:00Z",
+    "respostas": []
+  },
+  {
+    "id": "seed-02",
+    "texto": "Educação transforma — invistam nos professores",
+    "criadoEm": "2026-10-04T10:05:00Z",
+    "respostas": []
+  },
+  {
+    "id": "seed-03",
+    "texto": "Transparência total nos gastos públicos",
+    "criadoEm": "2026-10-04T10:10:00Z",
+    "respostas": [
+      {
+        "id": "resp-01",
+        "texto": "O portal da transparência precisa ser mais acessível para o cidadão comum",
+        "criadoEm": "2026-10-04T11:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "seed-04",
+    "texto": "Menos imposto, mais resultado para o cidadão",
+    "criadoEm": "2026-10-04T10:15:00Z",
+    "respostas": []
+  },
+  {
+    "id": "seed-05",
+    "texto": "Segurança pública para todos os bairros",
+    "criadoEm": "2026-10-04T10:20:00Z",
+    "respostas": [
+      {
+        "id": "resp-02",
+        "texto": "Policiamento comunitário funciona — temos que expandir",
+        "criadoEm": "2026-10-04T12:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "seed-06",
+    "texto": "Meio ambiente não é negociável",
+    "criadoEm": "2026-10-04T10:25:00Z",
+    "respostas": []
+  },
+  {
+    "id": "seed-07",
+    "texto": "Salário mínimo que pague as contas",
+    "criadoEm": "2026-10-04T10:30:00Z",
+    "respostas": []
+  },
+  {
+    "id": "seed-08",
+    "texto": "Combate à corrupção sem bandeira partidária",
+    "criadoEm": "2026-10-04T10:35:00Z",
+    "respostas": [
+      {
+        "id": "resp-03",
+        "texto": "Fiscalização independente é o caminho",
+        "criadoEm": "2026-10-04T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "seed-09",
+    "texto": "Saneamento básico é urgência, não promessa",
+    "criadoEm": "2026-10-04T10:40:00Z",
+    "respostas": []
+  },
+  {
+    "id": "seed-10",
+    "texto": "Transporte público digno já",
+    "criadoEm": "2026-10-04T10:45:00Z",
+    "respostas": []
+  }
+]

@@ -1,0 +1,40 @@
+.nav {
+  width: 100%;
+  background: var(--blue);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  height: 84px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.flag {
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.flag:hover {
+  transform: scale(1.15);
+}
+
+.links {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 36px;
+}
+
+.links a {
+  color: var(--white);
+  font-size: 22px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: var(--yellow);
+}

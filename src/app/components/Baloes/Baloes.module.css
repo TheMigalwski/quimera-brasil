@@ -1,0 +1,129 @@
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.baloes {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 80vh;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(0, 156, 59, 0.20) 0%, transparent 70%),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 223, 0, 0.20) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(0, 39, 118, 0.20) 0%, transparent 50%);
+}
+
+.balao {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  background: var(--green);
+  color: var(--yellow);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 22px;
+  border-radius: 18px;
+  width: max-content;
+  max-width: 320px;
+  line-height: 1.4;
+  word-break: break-word;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  user-select: none;
+}
+
+.balao:hover {
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.comRespostas {
+  border: 2px solid var(--yellow);
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputArea {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 720px;
+  justify-content: center;
+  padding: 24px 40px;
+}
+
+.inputWrapper {
+  flex: 1;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 18px;
+  border: 2px solid var(--blue);
+  border-radius: 24px;
+  font-size: 16px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--green);
+}
+
+.aviso {
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: var(--white);
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+  animation: fadeInOut 2.5s ease-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.enviar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--white);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.enviar:hover {
+  background: var(--blue);
+}
