@@ -5,10 +5,30 @@ import styles from "./Baloes.module.css";
 import ThreadPanel from "../ThreadPanel";
 
 const SPEED = 1.5;
+const LIMITE_DESKTOP = 20;
+const LIMITE_MOBILE = 12;
 
 function randomVel() {
   const angle = Math.random() * Math.PI * 2;
   return { vx: Math.cos(angle) * SPEED, vy: Math.sin(angle) * SPEED };
+}
+
+function getLimite() {
+  if (typeof window === "undefined") return LIMITE_DESKTOP;
+  return window.innerWidth <= 600 ? LIMITE_MOBILE : LIMITE_DESKTOP;
+}
+
+function classificar(baloes) {
+  const limite = getLimite();
+  if (baloes.length <= limite) {
+    baloes.forEach((b) => (b.fantasma = false));
+    return;
+  }
+  const sorted = [...baloes].sort(
+    (a, b) => (b.respostas?.length || 0) - (a.respostas?.length || 0)
+  );
+  const ativosSet = new Set(sorted.slice(0, limite).map((b) => b.id));
+  baloes.forEach((b) => (b.fantasma = !ativosSet.has(b.id)));
 }
 
 export default function Baloes() {
@@ -35,6 +55,7 @@ export default function Baloes() {
       ...vel,
       w: 0,
       h: 0,
+      fantasma: false,
     };
   }, []);
 
@@ -43,6 +64,7 @@ export default function Baloes() {
       .then((r) => r.json())
       .then((mensagens) => {
         baloesRef.current = mensagens.map((m) => initBalao(m));
+        classificar(baloesRef.current);
         forceRender((n) => n + 1);
       });
   }, [initBalao]);
@@ -81,6 +103,12 @@ export default function Baloes() {
       const items = baloesRef.current;
       for (let i = 0; i < items.length; i++) {
         const b = items[i];
+
+        if (b.fantasma) {
+          b.vx *= 0.998;
+          b.vy *= 0.998;
+        }
+
         b.x += b.vx;
         b.y += b.vy;
 
@@ -89,23 +117,26 @@ export default function Baloes() {
         if (b.y <= 0) { b.y = 0; b.vy = Math.abs(b.vy); }
         if (b.y + b.h >= ch) { b.y = ch - b.h; b.vy = -Math.abs(b.vy); }
 
-        for (let j = i + 1; j < items.length; j++) {
-          const o = items[j];
-          if (checkCollision(b, o)) {
-            const cx1 = b.x + b.w / 2, cy1 = b.y + b.h / 2;
-            const cx2 = o.x + o.w / 2, cy2 = o.y + o.h / 2;
-            let dx = cx1 - cx2, dy = cy1 - cy2;
-            if (dx === 0 && dy === 0) { dx = 1; dy = 1; }
-            const overlapX = (b.w / 2 + o.w / 2) - Math.abs(dx);
-            const overlapY = (b.h / 2 + o.h / 2) - Math.abs(dy);
-            const pushX = (dx > 0 ? 1 : -1) * (overlapX / 2 + 1);
-            const pushY = (dy > 0 ? 1 : -1) * (overlapY / 2 + 1);
-            if (overlapX < overlapY) {
-              b.x += pushX; o.x -= pushX;
-              const tempVx = b.vx; b.vx = o.vx; o.vx = tempVx;
-            } else {
-              b.y += pushY; o.y -= pushY;
-              const tempVy = b.vy; b.vy = o.vy; o.vy = tempVy;
+        if (!b.fantasma) {
+          for (let j = i + 1; j < items.length; j++) {
+            const o = items[j];
+            if (o.fantasma) continue;
+            if (checkCollision(b, o)) {
+              const cx1 = b.x + b.w / 2, cy1 = b.y + b.h / 2;
+              const cx2 = o.x + o.w / 2, cy2 = o.y + o.h / 2;
+              let dx = cx1 - cx2, dy = cy1 - cy2;
+              if (dx === 0 && dy === 0) { dx = 1; dy = 1; }
+              const overlapX = (b.w / 2 + o.w / 2) - Math.abs(dx);
+              const overlapY = (b.h / 2 + o.h / 2) - Math.abs(dy);
+              const pushX = (dx > 0 ? 1 : -1) * (overlapX / 2 + 1);
+              const pushY = (dy > 0 ? 1 : -1) * (overlapY / 2 + 1);
+              if (overlapX < overlapY) {
+                b.x += pushX; o.x -= pushX;
+                const tempVx = b.vx; b.vx = o.vx; o.vx = tempVx;
+              } else {
+                b.y += pushY; o.y -= pushY;
+                const tempVy = b.vy; b.vy = o.vy; o.vy = tempVy;
+              }
             }
           }
         }
@@ -133,6 +164,7 @@ export default function Baloes() {
     });
     const nova = await res.json();
     baloesRef.current.push(initBalao(nova));
+    classificar(baloesRef.current);
     setTexto("");
     forceRender((n) => n + 1);
   }
@@ -147,7 +179,9 @@ export default function Baloes() {
     const balao = baloesRef.current.find((b) => b.id === mensagemId);
     if (balao) {
       balao.respostas.push(resposta);
+      classificar(baloesRef.current);
       setThreadAberta({ ...balao, respostas: [...balao.respostas] });
+      forceRender((n) => n + 1);
     }
   }
 
@@ -165,10 +199,10 @@ export default function Baloes() {
             <div
               key={item.id}
               ref={(el) => (elRefs.current[i] = el)}
-              className={`${styles.balao} ${replies ? styles.comRespostas : ""}`}
+              className={`${styles.balao} ${replies ? styles.comRespostas : ""} ${item.fantasma ? styles.fantasma : ""}`}
               style={{
-                fontSize: `${16 * scale}px`,
-                padding: `${14 * scale}px ${22 * scale}px`,
+                fontSize: `${13 * scale}px`,
+                padding: `${10 * scale}px ${16 * scale}px`,
               }}
               onClick={() => setThreadAberta(item)}
             >

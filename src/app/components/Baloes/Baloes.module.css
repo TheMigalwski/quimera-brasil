@@ -9,7 +9,7 @@
   position: relative;
   width: 100%;
   flex: 1;
-  min-height: 80vh;
+  min-height: 0;
   overflow: hidden;
   background:
     radial-gradient(ellipse at 50% 50%, rgba(0, 156, 59, 0.20) 0%, transparent 70%),
@@ -24,22 +24,29 @@
   will-change: transform;
   background: var(--green);
   color: var(--yellow);
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 500;
-  padding: 14px 22px;
-  border-radius: 18px;
+  padding: 10px 16px;
+  border-radius: 14px;
   width: max-content;
-  max-width: 320px;
+  max-width: 260px;
   line-height: 1.4;
   word-break: break-word;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, opacity 0.6s, filter 0.6s;
   user-select: none;
 }
 
 .balao:hover {
   box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.fantasma {
+  opacity: 0.2;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .comRespostas {

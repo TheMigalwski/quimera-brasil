@@ -8,18 +8,17 @@ export default function Home() {
     <main className={styles.main}>
       <Menu />
 
-      <section id="inicio" className={styles.hero}>
-        <h1 className={styles.titulo}>
-          <span className={styles.quimera}>Quimera</span>{" "}
-          <span className={styles.brasil}>Brasil</span>
-        </h1>
-        <div className={styles.linha} />
-        <p className={styles.subtitulo}>
-          Cada voz importa. Diga o que o Brasil precisa ouvir.
-        </p>
-      </section>
-
-      <section id="pautas">
+      <section id="inicio" className={styles.pautas}>
+        <div className={styles.hero}>
+          <h1 className={styles.titulo}>
+            <span className={styles.quimera}>Quimera</span>{" "}
+            <span className={styles.brasil}>Brasil</span>
+          </h1>
+          <div className={styles.linha} />
+          <p className={styles.subtitulo}>
+            Cada voz importa. Diga o que o Brasil precisa ouvir.
+          </p>
+        </div>
         <Baloes />
       </section>
 

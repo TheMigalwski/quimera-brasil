@@ -3,10 +3,18 @@
   flex-direction: column;
 }
 
+/* ── Pautas (tela inicial) ── */
+.pautas {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 84px);
+}
+
 /* ── Hero ── */
 .hero {
   text-align: center;
-  padding: 32px 24px 16px;
+  padding: 16px 24px 8px;
+  flex-shrink: 0;
 }
 
 .titulo {
